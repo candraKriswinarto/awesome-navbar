@@ -17,7 +17,8 @@ nav#navbar {
   display: flex;
   align-items: center;
   padding: 1.5rem 2rem;
-  background: transparent;
+	background: transparent;
+	z-index: 2;
   transition: all .3s ease-in-out;
 }
 
@@ -36,7 +37,7 @@ nav#navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+	width: 100%;
 }
 
 .mobile-nav .nav-links {
@@ -55,7 +56,7 @@ nav#navbar {
 
 }
 
-.contact-btn {
+.btn {
   border: 1px solid #007BFF;
   border-radius: 5px;
   padding: 0.5rem 1.5rem;
@@ -64,7 +65,7 @@ nav#navbar {
   content: #111;
 }
 
-.contact-btn:hover {
+.btn:hover {
   background: #007BFF;
   color: #fff;
 }
@@ -73,39 +74,85 @@ nav#navbar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: "content content blank";
-  height: 100vh;
 }
 
 .home-content {
   grid-area: content;
-  background: #007BFF;
-  display: flex;
-  align-items: center;
+	background: #007BFF;
+	color: #fff;
+	padding: 12rem 4rem 0 4rem;
+	height: 140vh;
+}
+
+.home-content__des {
+	width: 400px;
+}
+
+.home-content__des h1 {
+	font-size: 4.5rem;
+	line-height: 1;
+	margin: 1rem 0;
+}
+
+.home-content__des p {
+	margin-bottom: 2rem;
+	opacity: 0.8;
+}
+
+.home-btn {
+	background: transparent;
+	border: 1px solid #fff;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 1rem 1.5rem;
+}
+
+.home-btn:hover {
+	color: #000;;
+	background: #fff;
 }
 
 .home-blank {
   grid-area: blank;
+}
 
+.home-img {
+	position: absolute;
+	top: 25%;
+	left: 40%;
+	width: 650px;
+}
+
+.home-img img {
+	width: 100%;
+	box-shadow: 1px 4px 7px rgba(0,0,0,.5);
 }
 
 section {
-  height: 100vh;;
+  height: 100vh;
 }
 
 @media screen and (max-width: 700px) {
   .mobile-nav {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -400px;
     flex-direction: column;
     justify-content: start;
-    width: 200px;
+    width: 250px;
     height: 100vh;
     padding: 7rem 2rem;
     background: #fff;
-    color: #111;
-    z-index: -1;
-  }
+		color: #111;
+		transition: all .5s ease-out;
+		z-index: -1;
+		box-shadow: 0px 1px 2px rgba(0,0,0,.5);
+	}
+	
+	.show-nav {
+		right: 0;
+	}
 
   .mobile-nav .nav-links {
     flex-direction: column;
@@ -118,5 +165,53 @@ section {
 
   .nav-links li a {
     color: #111 !important;
-  }
+	}
+
+	.burger-icons {
+		position: absolute;
+		top: 1.3rem;
+		right: 3.5rem;
+		width: 33px;
+		height: 30px;
+		cursor: pointer;
+		transition: all .2s ease-out;
+	}
+	
+	.burger-icons span {
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+		width: 100%;
+		height: 3px;
+		background: #000;
+	}
+
+	.burger-icons span::before, .burger-icons span::after {
+		content: '';
+		position: absolute;
+		top: 8px;
+		right: 0;
+		width: 100%;
+		height: 3px;
+		background: #000;
+	}
+
+	.burger-icons span::after {
+		top: -8px;
+	}
+
+	.home-wrapper {
+		grid-template-areas: "content content content";
+	}
+
+	.home-content {
+		height: 140vh;
+		padding: 8rem 4rem 0 4rem;
+	}
+
+	.home-img {
+		top: 38rem;
+		left: 2rem;
+		width: 80%;
+	}
 }
